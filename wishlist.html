@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width,initial-scale=1.0">
+    <title>Wishlist - Mini E-commerce App</title>
+    <link rel="stylesheet"href="style.css">
+  </head>
+  <body>
+     <nav>
+      <a
+      href="index.html">Home</a>
+      <a
+      href="wishlist.html">Wishlist</a>
+      <a
+      href="Cart.html">Cart</a>
+    </nav>
+    <main>
+    <div id="wishlist-grid" class="grid"></div>
+    </main>
+    <script src="wishlist.js">
+    documwnt.addEventListner('DOMContentLoaded', () => 
+    {
+      const wishlist =
+      JSON.parse(localStorage.getItem("wishlistedProducts"))] || [];
+      const grid =
+      document.getElementById('wishlist-grid');
+      wishlist.forEach(product) => {
+         const card =
+         document.createElement('div');
+         card.className = 'card''
+        card.innerHTML = `
+        <img src="${product.image}" alt="${product.title}" width="100">
+        <h4>${product.title}</h4>
+        <p>Price: $$
+        {product.price}</p>
+        <p>Rating: $
+        {product.rating.rate}</p>
+        <button onclick='addTocart(${JSON.stringify(product)})'>
+      add to Cart</button>`;
+      grid.appendChild(card);
+    });
+    });
+    function
+    addToCart(product)
+{
+    let cart =
+    JSON.parse(localStorage.getItem('cartProducts')) || [];
+  cart.push(product);
+    
+    localStorage.setItem('cartProducts',JSON.stringify(cart));
+alert('Product added to Cart!');
+}
+    </script>
+ </body>
+</html>
